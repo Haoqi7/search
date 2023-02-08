@@ -1,6 +1,6 @@
 ### 懒盘搜索
 
-Demo: [http://lzpan.com](http://lzpan.com)
+
 
 ### 使用
 
