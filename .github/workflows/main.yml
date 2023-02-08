@@ -3,20 +3,25 @@ on:
   push:
     branches:
       - main
+
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+    
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@master
-      
-    - name: Use Node.js 12
-      uses: actions/setup-node@v2-beta
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
       with:
-        node-version: '14'
-
-
-  
+        node-version: ${{ matrix.node-version }}
 
     - name: Build
       run: |
@@ -24,7 +29,8 @@ jobs:
         npx webpack --config webpack.config.js --mode production
     - name: Release
       uses: ncipollo/release-action@v1
-      with
+      with:
         artifacts: "dist"
         token: ${{ secrets.GITHUB_TOKEN }}
+        
         
