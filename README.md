@@ -1,4 +1,4 @@
-### 懒盘搜索
+### 网盘搜索
 
 
 
@@ -14,7 +14,7 @@
 
 1、克隆项目到本地：
 
-`git clone https://github.com/Xwudao/lzpan_search.git`
+
 
 2、安装依赖：
 
